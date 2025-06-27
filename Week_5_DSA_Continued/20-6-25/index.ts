@@ -45,37 +45,48 @@ class SinglyLinkedList {
     }
 
     traverseToIndex(index: number): singlyLinkedListNode | null {
-        if (index < 0 || index >= this.length) {
-            return null; // Index out of bounds
+        // if (index < 0 || index >= this.length) {
+        //     return null; // Index out of bounds
+        // }
+        // let current: singlyLinkedListNode | null = this.head;
+        // for (let i = 0; i < index; i++) {
+        //     if (current) {
+        //         current = current.next;
+        //     }
+        // }
+        //return current;
+
+        let counter = 0;
+        let currentNode = this.head;
+
+        while (counter !== index ) {
+            currentNode = currentNode?.next || null;
+            counter++;
         }
-        let current: singlyLinkedListNode | null = this.head;
-        for (let i = 0; i < index; i++) {
-            if (current) {
-                current = current.next;
-            }
-        }
-        return current;
+        return currentNode; // Return the node at the specified index
     }
 
     insertion(index: number, value: any) {
-        if (index < 0 || index > this.length) {
-            return; // Index out of bounds
-        }
-        if (index === 0) {
-            this.prepend(value);
-            return;
-        }
-        if (index === this.length) {
-            this.append(value);
-            return;
-        }
-        const newNode = new singlyLinkedListNode(value);
-        const prevNode = this.traverseToIndex(index - 1);
-        if (prevNode) {
-            newNode.next = prevNode.next;
-            prevNode.next = newNode;
-            this.length++;
-        }
+        // if (index < 0 || index > this.length) {
+        //     return; // Index out of bounds
+        // }
+        // if (index === 0) {
+        //     this.prepend(value);
+        //     return;
+        // }
+        // if (index === this.length) {
+        //     this.append(value);
+        //     return;
+        // }
+        // const newNode = new singlyLinkedListNode(value);
+        // const prevNode = this.traverseToIndex(index - 1);
+        // if (prevNode) {
+        //     newNode.next = prevNode.next;
+        //     prevNode.next = newNode;
+        //     this.length++;
+        // }
+
+        
     }
 
     remove(index: number): void {
@@ -104,6 +115,12 @@ class SinglyLinkedList {
         const preNode = this.traverseToIndex(index - 1);
         // Save the node to be removed
         const nodeToRemove = preNode ? preNode.next : null;
+        // create a holder for the next node
+        const holdingNode = nodeToRemove ? nodeToRemove.next : null;
+        //then we point the prvious node to the next node
+        if (preNode) {
+            preNode.next = holdingNode;
+        }
         //Then we reduce the length of the list
         this.length--;
     }
