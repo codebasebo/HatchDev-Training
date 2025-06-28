@@ -29,7 +29,7 @@ class DoublyCircularLinkedList {
         } else {
             let current = this.head;
             while (current.next !== this.head) {
-                current = current.next;
+                current = current.next!;
             }
             current.next = newNode;
             newNode.prev = current;
