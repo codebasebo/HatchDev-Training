@@ -1,4 +1,14 @@
-# HatchDev Training - Data Structures and Algorithms
+# HatchDev Training - Data S├── Week_6_DSA_Continued/
+    ├── 27-6-25/                   # HashMap implementation
+    ├── 28-6-25/                   # Binary trees, recursion, fibonacci
+    │   ├── binarytree.ts          # Binary tree traversals
+    │   ├── binartseachetree.ts    # Binary search tree
+    │   ├── recursive.ts           # Recursive algorithms
+    │   └── fibonaci.ts            # Fibonacci implementations
+    └── assignment/
+        └── hashmap.ts             # Simple hash map without collision handling
+└── Week_7_DSA_Continued/
+    └── hashmapcontinue.ts         # Advanced hash map conceptsctures and Algorithms
 
 Welcome to the HatchDev Training repository! This project contains implementations of various data structures and algorithms in TypeScript, organized by weekly modules.
 
@@ -59,9 +69,16 @@ Welcome to the HatchDev Training repository! This project contains implementatio
 - ✅ Queue (Linked List-based)
 - ✅ Queue (Double Linked List-based)
 
-### Week 6: Hash Tables
+### Week 6: Hash Tables and Trees
 - ✅ HashMap with collision handling
-- 🔄 Advanced hashing techniques (in progress)
+- ✅ Simple HashMap without collision handling
+- ✅ Binary Tree with traversals (Inorder, Preorder, Postorder)
+- ✅ Binary Search Tree (BST) implementation
+- ✅ Recursive algorithms
+- ✅ Fibonacci sequence implementations
+
+### Week 7: Advanced Hash Maps
+- 🔄 Advanced hashing techniques and collision resolution
 
 ## 🚀 Getting Started
 
@@ -98,6 +115,27 @@ deno run Week_5_DSA_Continued/assignment/singlecircularlinkedlist.ts
 deno run Week_5_DSA_Continued/assignment/doublelinkedlistqueue.ts
 ```
 
+#### Binary Tree Examples:
+```bash
+# Run binary tree traversals
+deno run Week_6_DSA_Continued/28-6-25/binarytree.ts
+
+# Run binary search tree
+deno run Week_6_DSA_Continued/28-6-25/binartseachetree.ts
+
+# Run fibonacci implementations
+deno run Week_6_DSA_Continued/28-6-25/fibonaci.ts
+```
+
+#### Hash Map Examples:
+```bash
+# Run simple hash map (no collision handling)
+deno run Week_6_DSA_Continued/assignment/hashmap.ts
+
+# Run advanced hash map
+deno run Week_6_DSA_Continued/27-6-25/hashmap.ts
+```
+
 #### Stack and Queue Examples:
 ```bash
 # Run stack implementation
@@ -108,6 +146,35 @@ deno run Week_5_DSA_Continued/21-6-25/queueLinkedList.ts
 ```
 
 ## 📖 Code Examples
+
+### Binary Tree Traversals
+```typescript
+// Binary Tree with Inorder, Preorder, Postorder traversals
+const root = new TreeNode(1);
+root.left = new TreeNode(2);
+root.right = new TreeNode(3);
+
+console.log("Inorder:", inorderTraversal(root));    // [2, 1, 3]
+console.log("Preorder:", preorderTraversal(root));  // [1, 2, 3]  
+console.log("Postorder:", postorderTraversal(root)); // [2, 3, 1]
+```
+
+### Binary Search Tree
+```typescript
+const bst = new BST();
+bst.addNode(10);
+bst.addNode(5);
+bst.addNode(15);
+// BST maintains sorted order for efficient searching
+```
+
+### Simple Hash Map
+```typescript
+const hashMap = new SimpleHashMap<string, number>();
+hashMap.put("apple", 10);
+hashMap.put("banana", 20);
+console.log(hashMap.get("apple")); // 10
+```
 
 ### Singly Circular Linked List
 ```typescript
@@ -144,9 +211,17 @@ Each implementation includes test cases demonstrating functionality. Look for co
 - Queue implementations using different approaches
 - Stack implementations (array and linked list)
 
-### Week 6: Hash Tables and Maps
+### Week 6: Hash Tables and Trees
 - HashMap with collision resolution
+- Simple HashMap without collision handling
+- Binary Tree traversal implementations
+- Binary Search Tree with insert and search operations
+- Recursive algorithm implementations
+- Fibonacci sequence variations
+
+### Week 7: Advanced Data Structures
 - Advanced hashing techniques
+- Hash map optimization strategies
 
 ## 🤝 Contributing
 
