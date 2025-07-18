@@ -1,28 +1,25 @@
-class HashNode<k, v> {
-    key: k;
-    value: v;
-    next: HashNode<k, v> | null = null;
+class HashNode<K, V> {
+    key: K;
+    value: V;
+    next: HashNode<K, V> | null = null;
 
-    constructor(key: k, value: v, next: HashNode<k, v> | null = null) {
-        if (key === null || value === null) {
-            throw new Error("Key and value cannot be null");
-        }
+    constructor(key: K, value: V, next: HashNode<K, V> | null = null) {
         this.key = key;
         this.value = value;
         this.next = next;
     }
 }
 
-class HashMap<k, v> {
-    private buckets: Array<HashNode<k, v> | null>;
+class HashMap<K, V> {
+    private buckets: Array<HashNode<K, V> | null>;
     private size: number;
 
-    constructor(size: number = 20){
+    constructor(size: number = 20) {
         this.size = size;
         this.buckets = new Array(size).fill(null);
     }
 
-    private hash(key: k): number {
+    private hash(key: K): number {
         const strK = String(key);
         let hash = 0;
         for (let i = 0; i < strK.length; i++) {
@@ -31,13 +28,13 @@ class HashMap<k, v> {
         return hash;
     }
 
-    set(key: k, value: v): void {
+    set(key: K, value: V): void {
         const index = this.hash(key);
         let head = this.buckets[index];
-
         let current = head;
 
-        while(current) {
+        // Check if key already exists and update
+        while (current) {
             if (current.key === key) {
                 current.value = value;
                 return;
@@ -50,9 +47,10 @@ class HashMap<k, v> {
         this.buckets[index] = newNode;
     }
 
-    get(key: k): v | null {
+    get(key: K): V | null {
         const index = this.hash(key);
         let current = this.buckets[index];
+        
         while (current) {
             if (current.key === key) {
                 return current.value;
@@ -62,10 +60,10 @@ class HashMap<k, v> {
         return null;
     }
 
-    remove(key: k): v | null {
+    remove(key: K): V | null {
         const idx = this.hash(key);
-        let current: HashNode<k, v> | null = this.buckets[idx];
-        let prev: HashNode<k, v> | null = null;
+        let current: HashNode<K, V> | null = this.buckets[idx];
+        let prev: HashNode<K, V> | null = null;
 
         while (current) {
             if (current.key === key) {
@@ -82,7 +80,10 @@ class HashMap<k, v> {
         return null;
     }
 
-    // Helper method to display the hash map
+    has(key: K): boolean {
+        return this.get(key) !== null;
+    }
+
     display(): void {
         console.log("HashMap Contents:");
         for (let i = 0; i < this.size; i++) {
@@ -98,15 +99,10 @@ class HashMap<k, v> {
             }
         }
     }
-
-    // Helper method to check if key exists
-    has(key: k): boolean {
-        return this.get(key) !== null;
-    }
 }
 
 // Example usage and testing
-console.log("=== HashMap with Collision Handling (Chaining) ===\n");
+console.log("=== HashMap with Collision Handling (Chaining) ===\\n");
 
 const hashMap = new HashMap<string, number>(5); // Small size to force collisions
 
@@ -155,3 +151,9 @@ numHashMap.set(2, "two");
 numHashMap.set(4, "four"); // This might collide with key 1
 numHashMap.set(7, "seven"); // This might collide with key 1
 numHashMap.display();
+
+console.log();
+console.log("=== Algorithm Analysis ===");
+console.log("Time Complexity: Average O(1), Worst O(n) for get/set/remove");
+console.log("Space Complexity: O(n) where n is number of key-value pairs");
+console.log("Collision Resolution: Separate Chaining using Linked Lists");
