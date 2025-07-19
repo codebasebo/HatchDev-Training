@@ -1,14 +1,4 @@
-# HatchDev Training - Data S├── Week_6_DSA_Continued/
-    ├── 27-6-25/                   # HashMap implementation
-    ├── 28-6-25/                   # Binary trees, recursion, fibonacci
-    │   ├── binarytree.ts          # Binary tree traversals
-    │   ├── binartseachetree.ts    # Binary search tree
-    │   ├── recursive.ts           # Recursive algorithms
-    │   └── fibonaci.ts            # Fibonacci implementations
-    └── assignment/
-        └── hashmap.ts             # Simple hash map without collision handling
-└── Week_7_DSA_Continued/
-    └── hashmapcontinue.ts         # Advanced hash map conceptsctures and Algorithms
+# HatchDev Training - Data Structures and Algorithms
 
 Welcome to the HatchDev Training repository! This project contains implementations of various data structures and algorithms in TypeScript, organized by weekly modules.
 
@@ -36,9 +26,37 @@ Welcome to the HatchDev Training repository! This project contains implementatio
 │       ├── doubleircularlinkedlist.ts
 │       ├── doublelinkedlistqueue.ts
 │       └── singlecircularlinkedlist.ts
-└── Week_6_DSA_Continued/
-    ├── 27-6-25/                   # HashMap implementation
-    └── 28-6-25/                   # Advanced data structures
+├── Week_6_DSA_Continued/
+│   ├── 27-6-25/                   # HashMap implementation
+│   ├── 28-6-25/                   # Binary trees, recursion, fibonacci
+│   │   ├── binarytree.ts          # Binary tree traversals
+│   │   ├── binartseachetree.ts    # Binary search tree
+│   │   ├── recursive.ts           # Recursive algorithms
+│   │   └── fibonaci.ts            # Fibonacci implementations
+│   └── assignment/
+│       └── hashmap.ts             # Simple hash map without collision handling
+├── Week_7_DSA_Continued/
+│   ├── 4-7-25/                    # Advanced hash map implementations
+│   ├── 5-7-25/                    # Binary tree algorithms
+│   │   ├── balanceBinaryTree.ts   # Balanced binary tree
+│   │   ├── invertbinarytree.ts    # Invert binary tree algorithm
+│   │   └── maximumdepthBinaryTree.ts # Maximum depth calculation
+│   └── assignment_1/
+│       ├── diameterOfBinaryTree.ts # Diameter calculation
+│       └── sametree100.ts         # Same tree comparison
+├── Week_8_DSA_Continued/
+│   ├── 7-11-25/                   # String algorithms and problem solving
+│   │   ├── groupAnagrams.ts       # Group anagrams algorithm
+│   │   ├── isomorphicString.ts    # Isomorphic string detection
+│   │   ├── missingNumber.ts       # Missing number finder
+│   │   └── sumOfNumbers.ts        # Sum algorithms
+│   ├── groupAnagrams.ts           # Anagram grouping implementation
+│   └── sumOfNumbers.ts            # Number sum calculations
+└── Week_9_DSA_Continued/
+    └── 18-7-25/                   # Sorting algorithms
+        ├── bubblesort.ts          # Bubble sort with optimization
+        ├── findminandmax.ts       # Min/Max finder algorithm
+        └── selectionsort.ts       # Selection sort implementation
 ```
 
 ## 🎯 Learning Objectives
@@ -77,8 +95,26 @@ Welcome to the HatchDev Training repository! This project contains implementatio
 - ✅ Recursive algorithms
 - ✅ Fibonacci sequence implementations
 
-### Week 7: Advanced Hash Maps
-- 🔄 Advanced hashing techniques and collision resolution
+### Week 7: Advanced Hash Maps and Binary Trees
+- ✅ Advanced hashing techniques and collision resolution
+- ✅ Balanced Binary Tree implementation
+- ✅ Invert Binary Tree algorithm
+- ✅ Maximum Depth of Binary Tree
+- ✅ Diameter of Binary Tree calculation
+- ✅ Same Tree comparison algorithm
+
+### Week 8: String Algorithms and Problem Solving
+- ✅ Group Anagrams algorithm
+- ✅ Isomorphic String detection
+- ✅ Missing Number finder
+- ✅ Sum of Numbers calculations
+- ✅ Advanced string manipulation techniques
+
+### Week 9: Sorting Algorithms
+- ✅ Bubble Sort with optimization
+- ✅ Selection Sort implementation
+- ✅ Find Min and Max algorithm (single pass)
+- ✅ Comprehensive test suites for all algorithms
 
 ## 🚀 Getting Started
 
@@ -136,13 +172,40 @@ deno run Week_6_DSA_Continued/assignment/hashmap.ts
 deno run Week_6_DSA_Continued/27-6-25/hashmap.ts
 ```
 
-#### Stack and Queue Examples:
+#### Sorting Algorithm Examples:
 ```bash
-# Run stack implementation
-deno run Week_5_DSA_Continued/21-6-25/stack.ts
+# Run bubble sort with comprehensive tests
+deno run Week_9_DSA_Continued/18-7-25/bubblesort.ts
 
-# Run queue with linked list
-deno run Week_5_DSA_Continued/21-6-25/queueLinkedList.ts
+# Run selection sort with test cases
+deno run Week_9_DSA_Continued/18-7-25/selectionsort.ts
+
+# Run find min/max algorithm
+deno run Week_9_DSA_Continued/18-7-25/findminandmax.ts
+```
+
+#### Binary Tree Algorithm Examples:
+```bash
+# Run invert binary tree
+deno run Week_7_DSA_Continued/5-7-25/invertbinarytree.ts
+
+# Run maximum depth calculation
+deno run Week_7_DSA_Continued/5-7-25/maximumdepthBinaryTree.ts
+
+# Run balanced binary tree check
+deno run Week_7_DSA_Continued/5-7-25/balanceBinaryTree.ts
+```
+
+#### String Algorithm Examples:
+```bash
+# Run group anagrams algorithm
+deno run Week_8_DSA_Continued/7-11-25/groupAnagrams.ts
+
+# Run isomorphic string detection
+deno run Week_8_DSA_Continued/7-11-25/isomorphicString.ts
+
+# Run missing number finder
+deno run Week_8_DSA_Continued/7-11-25/missingNumber.ts
 ```
 
 ## 📖 Code Examples
@@ -168,12 +231,42 @@ bst.addNode(15);
 // BST maintains sorted order for efficient searching
 ```
 
-### Simple Hash Map
+### Bubble Sort with Optimization
 ```typescript
-const hashMap = new SimpleHashMap<string, number>();
-hashMap.put("apple", 10);
-hashMap.put("banana", 20);
-console.log(hashMap.get("apple")); // 10
+const bubbleSort = new BubbleArr([64, 34, 25, 12, 22, 11, 90]);
+const sorted = bubbleSort.bubbleSort();
+console.log("Sorted array:", sorted);
+// Includes early termination for already sorted arrays
+```
+
+### Selection Sort
+```typescript
+const selectionSort = new selectionSort([64, 25, 12, 22, 11]);
+const sorted = selectionSort.selectionSort();
+console.log("Sorted array:", sorted);
+// Always O(n²) time complexity, minimum swaps
+```
+
+### Find Min and Max (Single Pass)
+```typescript
+const minMax = new MinMax();
+const result = minMax.findMinAndMax([3, 5, 1, 9, 2, 8]);
+console.log(`Min: ${result.min}, Max: ${result.max}`); // Min: 1, Max: 9
+```
+
+### Group Anagrams
+```typescript
+const result = groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]);
+console.log(result); // [["eat","tea","ate"],["tan","nat"],["bat"]]
+```
+
+### Invert Binary Tree
+```typescript
+const root = new TreeNode(4);
+root.left = new TreeNode(2);
+root.right = new TreeNode(7);
+const inverted = invertTree(root);
+// Tree structure is mirrored
 ```
 
 ### Singly Circular Linked List
@@ -219,9 +312,25 @@ Each implementation includes test cases demonstrating functionality. Look for co
 - Recursive algorithm implementations
 - Fibonacci sequence variations
 
-### Week 7: Advanced Data Structures
-- Advanced hashing techniques
-- Hash map optimization strategies
+### Week 7: Advanced Data Structures and Tree Algorithms
+- Balanced Binary Tree implementation
+- Invert Binary Tree algorithm
+- Maximum Depth of Binary Tree calculation
+- Diameter of Binary Tree
+- Same Tree comparison algorithm
+
+### Week 8: String Algorithms and Problem Solving
+- Group Anagrams algorithm implementation
+- Isomorphic String detection
+- Missing Number finder algorithm
+- Sum of Numbers calculations
+- Advanced string manipulation techniques
+
+### Week 9: Sorting Algorithms
+- Bubble Sort with optimization and early termination
+- Selection Sort with comprehensive test cases
+- Find Min and Max algorithm (single pass optimization)
+- Complete test suites with edge cases and performance analysis
 
 ## 🤝 Contributing
 
