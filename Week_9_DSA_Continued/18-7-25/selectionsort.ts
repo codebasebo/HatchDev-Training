@@ -16,8 +16,10 @@ class selectionSort {
                     minIndex = j;
                 }
             }
-            // Swap the found minimum element with the first element
-            [this.arr[i], this.arr[minIndex]] = [this.arr[minIndex], this.arr[i]];
+            if (minIndex !== i) {
+                // Swap the found minimum element with the first element
+                [this.arr[i], this.arr[minIndex]] = [this.arr[minIndex], this.arr[i]];
+            }
             
         }
         return this.arr;
