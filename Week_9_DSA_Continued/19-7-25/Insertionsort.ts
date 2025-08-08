@@ -1,5 +1,3 @@
-//tail columbe optimiation
-
 class Insertionsort {
     arr: number[];
 
