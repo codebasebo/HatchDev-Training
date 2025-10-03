@@ -1,0 +1,9 @@
+create a theme switcher that switches your app between light and dark Mode
+1. create a card a card that holds theme info (Theme name, Card name)
+2. create a componenet called switcher
+3.
+
+
+Build useContest and useMemo from scretch
+
+building a finite state machine

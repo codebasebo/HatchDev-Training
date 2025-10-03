@@ -1,0 +1,455 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Josefin Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 18px;
+  line-height: 1;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+.app {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 70px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.app.dark {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+}
+
+@media (max-width: 768px) {
+  .app {
+    padding: 48px 24px;
+  }
+}
+
+.container {
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 48px;
+}
+
+.title {
+  color: white;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 15px;
+  text-transform: uppercase;
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 26px;
+  height: 26px;
+}
+
+.theme-toggle img {
+  width: 100%;
+  height: 100%;
+}
+
+.todo-input-container {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.todo-input {
+  width: 100%;
+  padding: 20px 72px 20px 72px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-family: 'Josefin Sans', sans-serif;
+  background: white;
+  color: hsl(235, 19%, 35%);
+  caret-color: hsl(220, 98%, 61%);
+}
+
+.todo-input:focus {
+  outline: none;
+}
+
+.todo-input::placeholder {
+  color: hsl(236, 9%, 61%);
+}
+
+.input-circle {
+  position: absolute;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  border: 1px solid hsl(236, 33%, 92%);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.todo-list {
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 35px 50px -15px rgba(194, 195, 214, 0.5);
+  overflow: hidden;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid hsl(236, 33%, 92%);
+  background: white;
+  cursor: grab;
+  transition: all 0.2s ease;
+}
+
+.todo-item:hover {
+  background: hsl(236, 33%, 98%);
+}
+
+.todo-item.dragging {
+  cursor: grabbing;
+  opacity: 0.5;
+}
+
+.todo-checkbox {
+  width: 24px;
+  height: 24px;
+  border: 1px solid hsl(236, 33%, 92%);
+  border-radius: 50%;
+  margin-right: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.todo-checkbox:hover {
+  border-color: hsl(220, 98%, 61%);
+}
+
+.todo-checkbox.completed {
+  background: linear-gradient(135deg, hsl(192, 100%, 67%) 0%, hsl(280, 87%, 65%) 100%);
+  border: none;
+}
+
+.todo-text {
+  flex: 1;
+  font-size: 18px;
+  color: hsl(235, 19%, 35%);
+  transition: all 0.2s ease;
+}
+
+.todo-text.completed {
+  text-decoration: line-through;
+  color: hsl(236, 9%, 61%);
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  padding: 4px;
+  margin-left: 16px;
+}
+
+.todo-item:hover .delete-btn {
+  opacity: 1;
+}
+
+.todo-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: white;
+  font-size: 14px;
+  color: hsl(236, 9%, 61%);
+}
+
+.items-left {
+  color: hsl(236, 9%, 61%);
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 18px;
+}
+
+.filter-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: hsl(236, 9%, 61%);
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+.filter-btn:hover {
+  color: hsl(235, 19%, 35%);
+}
+
+.filter-btn.active {
+  color: hsl(220, 98%, 61%);
+}
+
+.clear-completed {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: hsl(236, 9%, 61%);
+  transition: color 0.2s ease;
+}
+
+.clear-completed:hover {
+  color: hsl(235, 19%, 35%);
+}
+
+@media (max-width: 768px) {
+  .todo-controls {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .filter-buttons {
+    order: -1;
+    background: white;
+    padding: 16px;
+    border-radius: 5px;
+    margin-top: 16px;
+    box-shadow: 0 35px 50px -15px rgba(194, 195, 214, 0.5);
+    justify-content: center;
+  }
+  
+  .bottom-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+.drag-instruction {
+  text-align: center;
+  color: hsl(236, 9%, 61%);
+  font-size: 14px;
+  margin-top: 50px;
+}
+
+/* Dark theme styles */
+.app.dark {
+  background: hsl(235, 21%, 11%);
+}
+
+.app.dark .todo-input {
+  background: hsl(235, 24%, 19%);
+  color: hsl(234, 39%, 85%);
+}
+
+.app.dark .todo-input::placeholder {
+  color: hsl(234, 11%, 52%);
+}
+
+.app.dark .input-circle {
+  border-color: hsl(237, 14%, 26%);
+}
+
+.app.dark .todo-list {
+  background: hsl(235, 24%, 19%);
+  box-shadow: 0 35px 50px -15px rgba(0, 0, 0, 0.5);
+}
+
+.app.dark .todo-item {
+  background: hsl(235, 24%, 19%);
+  border-bottom-color: hsl(237, 14%, 26%);
+}
+
+.app.dark .todo-item:hover {
+  background: hsl(235, 24%, 22%);
+}
+
+.app.dark .todo-checkbox {
+  border-color: hsl(237, 14%, 26%);
+}
+
+.app.dark .todo-text {
+  color: hsl(234, 39%, 85%);
+}
+
+.app.dark .todo-text.completed {
+  color: hsl(233, 14%, 35%);
+}
+
+.app.dark .todo-controls {
+  background: hsl(235, 24%, 19%);
+}
+
+.app.dark .filter-buttons {
+  background: hsl(235, 24%, 19%);
+}
+
+.app.dark .filter-btn:hover {
+  color: hsl(234, 39%, 85%);
+}
+
+.app.dark .clear-completed:hover {
+  color: hsl(234, 39%, 85%);
+}
+
+/* Todo Input Styles */
+.todo-input-container {
+  position: relative;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.input-circle {
+  position: absolute;
+  left: 24px;
+  width: 24px;
+  height: 24px;
+  border: 1px solid hsl(236, 33%, 92%);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.todo-input {
+  width: 100%;
+  padding: 20px 24px 20px 72px;
+  border: none;
+  border-radius: 5px;
+  background: white;
+  font-size: 18px;
+  color: hsl(235, 19%, 35%);
+  outline: none;
+}
+
+.todo-input::placeholder {
+  color: hsl(236, 9%, 61%);
+}
+
+/* Todo Container Styles */
+.todo-container {
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 35px 50px rgba(194, 195, 214, 0.5);
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.todo-list {
+  background: white;
+}
+
+.empty-state {
+  padding: 40px;
+  text-align: center;
+  color: hsl(236, 9%, 61%);
+}
+
+/* Todo Footer Styles */
+.todo-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: white;
+  border-top: 1px solid hsl(236, 33%, 92%);
+  font-size: 14px;
+}
+
+.items-left {
+  color: hsl(236, 9%, 61%);
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 18px;
+}
+
+.filter-btn {
+  background: none;
+  border: none;
+  color: hsl(236, 9%, 61%);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.filter-btn:hover {
+  color: hsl(220, 98%, 61%);
+}
+
+.filter-btn.active {
+  color: hsl(220, 98%, 61%);
+}
+
+.clear-completed {
+  background: none;
+  border: none;
+  color: hsl(236, 9%, 61%);
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.clear-completed:hover {
+  color: hsl(235, 19%, 35%);
+}
+
+/* Drag instruction */
+.drag-instruction {
+  text-align: center;
+  color: hsl(236, 9%, 61%);
+  font-size: 14px;
+  margin-top: 40px;
+}
+
+/* Dark mode adjustments */
+.app.dark .todo-input-container .input-circle {
+  border-color: hsl(233, 14%, 35%);
+}
+
+.app.dark .todo-input {
+  background: hsl(235, 24%, 19%);
+  color: hsl(234, 39%, 85%);
+}
+
+.app.dark .todo-container {
+  background: hsl(235, 24%, 19%);
+}
+
+.app.dark .todo-list {
+  background: hsl(235, 24%, 19%);
+}
+
+.app.dark .todo-footer {
+  background: hsl(235, 24%, 19%);
+  border-top-color: hsl(233, 14%, 35%);
+}
+
+.app.dark .drag-instruction {
+  color: hsl(234, 11%, 52%);
+}
